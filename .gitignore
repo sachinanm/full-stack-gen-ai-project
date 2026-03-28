@@ -1,0 +1,16 @@
+# Environments
+.env
+.venv
+venv/
+env/
+__pycache__
+*.pyc
+
+# Local Database Files
+data/
+chroma_db/
+uploads/
+
+# IDEs
+.idea
+.vscode

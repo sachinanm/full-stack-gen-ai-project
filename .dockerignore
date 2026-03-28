@@ -1,0 +1,18 @@
+# Git and Environment
+.git
+.gitignore
+.env
+.idea
+.vscode
+__pycache__
+*.pyc
+
+# Local Virtualenvs
+.venv
+venv/
+env/
+
+# Data (Crucial: Do not upload your local vectors to the cloud!)
+data/
+chroma_db/
+uploads/

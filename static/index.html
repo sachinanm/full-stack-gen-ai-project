@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Enterprise Edition</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-layout">
+        
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-bolt"></i> Nexus AI
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item active" data-target="chat-view">
+                    <i class="fa-regular fa-comments"></i> Chat Interface
+                </li>
+                <li class="nav-item" data-target="kb-view">
+                    <i class="fa-solid fa-database"></i> Knowledge Base
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- ====== CHAT VIEW ====== -->
+            <section id="chat-view" class="view active-view">
+                <div class="chat-container">
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message system-message">
+                            <div class="message-bubble welcome-shimmer">
+                                <h3 style="margin-bottom: 8px;"><i class="fa-solid fa-wand-magic-sparkles"></i> Welcome to Nexus</h3>
+                                <p>You are using an advanced Agentic RAG system powered by LangGraph. Ask any question, and the agent will dynamically search your Knowledge Base or the live internet to find the answer.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-wrapper">
+                        <form id="chat-form" class="input-form">
+                            <textarea id="chat-input" placeholder="Message Nexus..." rows="1"></textarea>
+                            <button type="submit" id="send-btn" class="btn-send"><i class="fa-solid fa-arrow-up"></i></button>
+                        </form>
+                        <div class="disclaimer">Nexus AI connects to DuckDuckGo and local Vectors. AI can make mistakes.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====== KNOWLEDGE BASE VIEW ====== -->
+            <section id="kb-view" class="view hidden-view">
+                <div class="kb-container">
+                    
+                    <header class="kb-header">
+                        <h2>Knowledge Base Dashboard</h2>
+                        <p>Monitor your vector embeddings and manage uploaded datasets.</p>
+                    </header>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon purple-gradient">
+                                <i class="fa-solid fa-file-lines"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span>Total Documents</span>
+                                <h3 id="stat-files">0</h3>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon blue-gradient">
+                                <i class="fa-solid fa-cubes"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span>Embedded Vectors</span>
+                                <h3 id="stat-vectors">0</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-grid">
+                        
+                        <!-- Upload Section -->
+                        <div class="upload-zone" id="drop-zone">
+                            <i class="fa-solid fa-cloud-arrow-up fa-3x"></i>
+                            <h3>Upload New Context</h3>
+                            <p>Drag and drop PDF, TXT, or Image files.</p>
+                            <label class="btn-upload">
+                                Browse Files
+                                <input type="file" id="file-input" accept=".pdf, .txt, .png, .jpg, .jpeg, .webp" hidden>
+                            </label>
+                            <div id="upload-progress" class="hidden">
+                                <div class="spinner"></div> <span>Extracting data...</span>
+                            </div>
+                        </div>
+
+                        <!-- Table Section -->
+                        <div class="table-card">
+                            <div class="card-header">
+                                <h3>Ingested Files</h3>
+                                <button id="clear-db-btn" class="btn-danger"><i class="fa-solid fa-trash-can"></i> Clear Store</button>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Filename</th>
+                                            <th>Type</th>
+                                            <th>Size</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="db-table-body">
+                                        <tr><td colspan="4" style="text-align:center; padding: 2rem;">Loading...</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
